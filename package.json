@@ -1,0 +1,24 @@
+{
+  "name": "gigity-api",
+  "version": "1.0.0",
+  "description": "*A Database desgined to manage, relate, and share info about both past and upcoming shows in your area*",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WyattW0569/gigity-api.git"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/WyattW0569/gigity-api/issues"
+  },
+  "homepage": "https://github.com/WyattW0569/gigity-api#readme",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mysql2": "^3.23.2"
+  }
+}
