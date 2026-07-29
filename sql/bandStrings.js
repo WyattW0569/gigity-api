@@ -8,7 +8,7 @@ e.getBandById = `SELECT band_id, name, icon_link, created_at
                  FROM Bands
                  WHERE band_id = ?`;
 
-e.getBandsPlayedWith = `SELECT DISTINCT B.name
+e.getBandsPlayedWith = `SELECT DISTINCT B.name, B.band_id
                         FROM Bands B
                         JOIN Lineups L1 ON B.band_id = L1.band_id
                         JOIN Lineups L2 ON L1.show_id = L2.show_id
@@ -31,7 +31,7 @@ e.getBandShows = `SELECT S.show_name, S.date
                   FROM Bands B, Shows S, Lineups L
                   WHERE B.band_id = L.band_id
                   AND S.show_id = L.show_id
-                  AND b.band_id = ?;`;
+                  AND B.band_id = ?;`;
 
 // POST queries
 e.createBand = `INSERT INTO Bands (name, icon_link)
