@@ -23,6 +23,9 @@ e.getVenue = `SELECT V.venue_id, V.name
 e.createShow = `INSERT INTO Shows (show_name, date, venue_id, ticket_link)
                 VALUES (?, ?, ?, ?)`
 
+e.createLineup = `INSERT INTO Lineups (show_id, band_id)
+                  VALUES (?, ?)`;
+
 // PATCH queries
 e.updateShowName = `UPDATE Shows SET show_name = ?
                     WHERE show_id = ?`;
