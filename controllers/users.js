@@ -1,5 +1,9 @@
 const pool = require('../db/connection');
 const userStrings = require("../sql/userStrings");
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const SALT_ROUNDS = 10;
+
 
 module.exports = {
 
@@ -32,8 +36,7 @@ module.exports = {
     createUser: async (req, res) => {
         const { email, username, password, pfp_url } = req.body;
         const sqlQuery = userStrings.createUser;
-        // add pass hashing
-        password_hash = password;
+        const password_hash = await bcrypt.hash(password, SALT_ROUNDS);
         const inputs = [email, username, password_hash, pfp_url];
         const [rows] = await pool.query(sqlQuery, inputs);
         res.json(rows);
@@ -60,10 +63,32 @@ module.exports = {
     updatePassword: async (req, res) => {
         const { id, password } = req.body;
         const sqlQuery = userStrings.updatePassword;
-        // add pass hashing
-        password_hash = password;
+        const password_hash = await bcrypt.hash(password, SALT_ROUNDS);
         const inputs = [password_hash, id];
         const [rows] = await pool.query(sqlQuery, inputs);
         res.json(rows);
-    }
+    },
+
+    // login
+    login: async (req, res) => {
+        const { email, password } = req.body;
+        const [rows] = await pool.query(userStrings.getUserByEmail, [email]);
+        if (rows.length === 0) return res.status(401).json({ error: 'Invalid credentials' });
+
+        const user = rows[0];
+        const match = await bcrypt.compare(password, user.password_hash);
+        if (!match) return res.status(401).json({ error: 'Invalid credentials' });
+
+        const payload = {
+            user_id: user.user_id,
+            email: user.email,
+            username: user.username,
+            pfp_url: user.pfp_url,
+        };
+
+        const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '7d' });
+        res.json({ token });
+    },
+
+
 }

@@ -14,6 +14,10 @@ e.getFollowedBands = `SELECT B.name
                       AND F.band_id = B.band_id
                       AND U.user_id = ?;`;
 
+e.getUserByEmail = `SELECT user_id, email, username, password_hash, pfp_url
+                    FROM Users
+                    WHERE email = ?`;
+
 // POST queries
 e.createUser = `INSERT INTO Users (email, username, password_hash, profile_picture_url)
                 VALUES (?, ?, ?, ?);`;

@@ -1,5 +1,6 @@
 CREATE TABLE Users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
+    role ENUM('user', 'admin') DEFAULT 'user',
     email VARCHAR(255) UNIQUE NOT NULL,
     hashed_password CHAR(60) NOT NULL,
     username VARCHAR(255) NOT NULL,
