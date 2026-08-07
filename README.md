@@ -70,7 +70,7 @@
 ## Week 3 Goals
 - **Implementation**
    - [ ] Produce a BCNF decomp proof for our design
-   - [ ] Implementing DELETE routes and queries
+   - [x] Implementing DELETE routes and queries
    - [x] Implementing more complex routes and queries
       - login
       - adding users to bands
@@ -78,7 +78,13 @@
       - getting counts of band members, followers, shows played, etc.
    - [x] Looking into password hashing
 - **Testing**
-   - [ ] Test new routes and ensure they work
+   - [x] Test new routes and ensure they work
+
+## Week 4 Reflection
+
+## Week 4 Goals
+- **Implementation**
+   - [ ] Create admin protected version of the routes, and alter the non admin versions to inherit the input info from the JWT
    
    
    
