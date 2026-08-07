@@ -4,14 +4,14 @@ const userStrings = require("../sql/venueStrings");
 module.exports = {
     // get all venues
     getAllVenues: async(req,res) => {
-        const sqlQuery = venueStrings.getAllVenue;
+        const sqlQuery = venueStrings.getAllVenues;
         const [rows] = await pool.query(sqlQuery);
         res.json(rows);
     },
 
     // get venues by venue_id
     getVenueById: async(req,res) => {
-        const id = req.params.id;
+        const { id } = req.params.id;
         const sqlQuery = venueStrings.getVenueById;
         const inputs = [id];
         const [rows] = await pool.query(sqlQuery, inputs);
@@ -20,7 +20,7 @@ module.exports = {
 
     // get all shows at a given venue
     getVenueShows: async(req,res) => {
-        const id = req.params.id;
+        const { id } = req.params.id;
         const sqlQuery = venueStrings.getVenueShows;
         const inputs = [id];
         const [rows] = await pool.query(sqlQuery, inputs);
