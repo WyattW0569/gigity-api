@@ -25,3 +25,7 @@ e.updateVenueName = `UPDATE Venues
 e.updateVenueBookingLink = `UPDATE Venues
                             SET booking_link = ?
                             WHERE venue_id = ?`;
+
+// DELETE queries
+e.deleteVenue = `DELETE FROM Venues
+                WHERE venue_id = ?`;

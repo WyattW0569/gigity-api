@@ -45,3 +45,7 @@ e.updateBandPFP = `UPDATE Bands
 e.updateBandName = `UPDATE Bands
                     SET name = ?
                     WHERE band_id = ?;`;
+
+// DELETE queries
+e.deleteBand = `DELETE FROM Bands
+                WHERE band_id = ?;`;

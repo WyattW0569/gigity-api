@@ -38,3 +38,10 @@ e.updateShowVenue = `UPDATE Shows SET venue_id = ?
 
 e.updateShowTicketLink = `UPDATE Shows SET ticket_link = ?
                           WHERE show_id = ?`;
+
+// DELETE queries
+e.deleteShow = `DELETE FROM Shows
+                WHERE show_id = ?;`;
+
+e.deleteLineupEntry = `DELETE FROM Lineups
+                       WHERE show_id = ? AND band_id = ?;`;

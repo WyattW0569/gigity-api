@@ -69,6 +69,15 @@ module.exports = {
         res.json(rows);
     },
 
+    // delete user
+    deleteUser: async (req, res) => {
+        const id = req.params.id
+        const sqlQuery = userStrings.deleteUser;
+        const inputs = [id];
+        const [rows] = await pool.query(sqlQuery, inputs);
+        res.json(rows);
+    },
+
     // login
     login: async (req, res) => {
         const { email, password } = req.body;

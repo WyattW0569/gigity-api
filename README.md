@@ -71,12 +71,12 @@
 - **Implementation**
    - [ ] Produce a BCNF decomp proof for our design
    - [ ] Implementing DELETE routes and queries
-   - [ ] Implementing more complex routes and queries
+   - [x] Implementing more complex routes and queries
       - login
       - adding users to bands
       - following bands
       - getting counts of band members, followers, shows played, etc.
-   - [ ] Looking into password hashing
+   - [x] Looking into password hashing
 - **Testing**
    - [ ] Test new routes and ensure they work
    

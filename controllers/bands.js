@@ -70,5 +70,13 @@ module.exports = {
         const inputs = [name, id];
         const [rows] = await pool.query(sqlQuery, inputs);
         res.json(rows);
+    },
+
+    deleteBand: async (req, res) => {
+        const id = req.params.id;
+        const sqlQuery = bandStrings.deleteBand;
+        const inputs = [id];
+        const [rows] = await pool.query(sqlQuery, inputs);
+        res.json(rows);
     }
 }

@@ -2,8 +2,6 @@ const express = require('express');
 const router = express.Router();
 const venueController = require('../../controllers/venues');
 
-// create venue
-// /venues
-router.post('/', venueController.createVenue);
+router.delete('/:id', venueController.deleteVenue);
 
 module.exports = router;

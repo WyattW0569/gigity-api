@@ -34,3 +34,7 @@ e.updateUsername = `UPDATE Users
 e.updatePassword = `UPDATE Users
                     SET hashed_password = ?
                     WHERE user_id = ?;`;
+
+// DELETE queries
+e.deleteUser = `DELETE FROM Users
+                WHERE user_id = ?;`;

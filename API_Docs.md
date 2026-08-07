@@ -108,6 +108,16 @@ Update a user's password. New password is automatically hashed before storage.
 
 ---
 
+### `DELETE /users/:id`
+Delete a user by ID.
+
+**URL Params**
+| Param | Type | Description |
+|---|---|---|
+| `id` | integer | The user's `user_id` |
+
+---
+
 ## Bands
 
 ### `GET /bands`
@@ -205,6 +215,16 @@ Update a band's name.
 |---|---|---|---|
 | `id` | integer | yes | The band's `band_id` |
 | `name` | string | yes | New band name |
+
+---
+
+### `DELETE /bands/:id`
+Delete a band by ID.
+
+**URL Params**
+| Param | Type | Description |
+|---|---|---|
+| `id` | integer | The band's `band_id` |
 
 ---
 
@@ -320,14 +340,57 @@ Update the ticket link for a show.
 
 ---
 
+### `DELETE /shows/:id`
+Delete a show by ID.
+
+**URL Params**
+| Param | Type | Description |
+|---|---|---|
+| `id` | integer | The show's `show_id` |
+
+---
+
+### `DELETE /shows/:show_id/:band_id`
+Remove a specific band from a show's lineup.
+
+**URL Params**
+| Param | Type | Description |
+|---|---|---|
+| `show_id` | integer | The show's `show_id` |
+| `band_id` | integer | The band's `band_id` |
+
+---
+
 ## Venues
 
 ### `GET /venues`
-Get all venues
+Get all venues.
+
+**Response** - Array of venue objects: `venue_id`, `name`, `address`, `booking_link`
+
+---
+
 ### `GET /venues/:id`
-Get venue by ID
+Get a single venue by ID.
+
+**URL Params**
+| Param | Type | Description |
+|---|---|---|
+| `id` | integer | The venue's `venue_id` |
+
+---
+
 ### `GET /venues/:id/shows`
-Get all shows at a venue
+Get all shows at a given venue.
+
+**URL Params**
+| Param | Type | Description |
+|---|---|---|
+| `id` | integer | The venue's `venue_id` |
+
+**Response** - Array of show objects.
+
+---
 
 ### `POST /venues`
 Create a new venue.
@@ -339,8 +402,34 @@ Create a new venue.
 | `address` | string | yes | Venue address |
 | `booking_link` | string | no | URL to book the venue |
 
-### `PATCH /venues/update/name`
-**Request Body**: `{ id, name }`
+---
 
-### `PATCH /venues/update/booking-link`
-**Request Body**: `{ id, booking_link }`
+### `PATCH /venues/update/name`
+Update a venue's name.
+
+**Request Body**
+| Field | Type | Required | Description |
+|---|---|---|---|
+| `id` | integer | yes | The venue's `venue_id` |
+| `name` | string | yes | New venue name |
+
+---
+
+### `PATCH /venues/update/booking_link`
+Update a venue's booking link.
+
+**Request Body**
+| Field | Type | Required | Description |
+|---|---|---|---|
+| `id` | integer | yes | The venue's `venue_id` |
+| `booking_link` | string | yes | New booking URL |
+
+---
+
+### `DELETE /venues/:id`
+Delete a venue by ID.
+
+**URL Params**
+| Param | Type | Description |
+|---|---|---|
+| `id` | integer | The venue's `venue_id` |

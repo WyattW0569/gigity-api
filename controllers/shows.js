@@ -84,5 +84,21 @@ module.exports = {
         const inputs = [ticket_link, id];
         const [rows] = await pool.query(sqlQuery, inputs);
         res.json(rows);
+    },
+
+    deleteShow: async (req, res) => {
+        const { id } = req.params;
+        const sqlQuery = showStrings.deleteShow;
+        const inputs = [id];
+        const [rows] = await pool.query(sqlQuery, inputs);
+        res.json(rows);
+    },
+
+    deleteLineupEntry: async (req, res) => {
+        const { show_id, band_id } = req.params;
+        const sqlQuery = showStrings.deleteLineupEntry;
+        const inputs = [show_id, band_id];
+        const [rows] = await pool.query(sqlQuery, inputs);
+        res.json(rows);
     }
 }
