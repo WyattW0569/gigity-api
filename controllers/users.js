@@ -83,7 +83,8 @@ module.exports = {
             user_id: user.user_id,
             email: user.email,
             username: user.username,
-            pfp_url: user.pfp_url,
+            pfp_url: user.profile_picture_url,
+            role: user.role
         };
 
         const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '7d' });
