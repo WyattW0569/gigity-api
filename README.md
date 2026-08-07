@@ -53,12 +53,32 @@
 
 ## Week 2 Goals
 - **Implementation**
-   - [ ] Start Development on API
+   - [x] Start Development on API
       - create routes for all queries from last week
       - create routes to input bands, shows, users, etc.
       - create routes to follow bands, join bands, etc.
       - create documentation for routes
-- **TESTING**
-   - [ ] Come up with additional queries for key features
-   - [ ] Test API routes to make sure they return what we expect
+- **Testing**
+   - [x] Come up with additional queries for key features
+   - [x] Test API routes to make sure they return what we expect
+
+## Week 3 Reflection
+- *Started API DEV*
+   - Created all routes needed for simple GET, POST, and PATCH requests, as well as the routes for the queries that we defined last week
+   - Reorganized project structure
+
+## Week 3 Goals
+- **Implementation**
+   - [ ] Produce a BCNF decomp proof for our design
+   - [ ] Implementing DELETE routes and queries
+   - [ ] Implementing more complex routes and queries
+      - login
+      - adding users to bands
+      - following bands
+      - getting counts of band members, followers, shows played, etc.
+   - [ ] Looking into password hashing
+- **Testing**
+   - [ ] Test new routes and ensure they work
+   
+   
    
