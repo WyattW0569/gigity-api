@@ -49,3 +49,16 @@ e.updateBandName = `UPDATE Bands
 // DELETE queries
 e.deleteBand = `DELETE FROM Bands
                 WHERE band_id = ?;`;
+
+// COUNT queries
+e.getMemberCount = `SELECT COUNT(*) AS member_count
+                    FROM Members
+                    WHERE band_id = ?`;
+
+e.getFollowerCount = `SELECT COUNT(*) AS follower_count
+                      FROM Followers
+                      WHERE band_id = ?`;
+
+e.getShowCount = `SELECT COUNT(*) AS show_count
+                  FROM Lineups
+                  WHERE band_id = ?`;

@@ -2,10 +2,11 @@ const express = require('express');
 const router = express.Router();
 const memberController = require('../../controllers/members')
 
-// get all members from a given band
-router.get('/:id', memberController.getMembers);
+// get all members of a band
+router.get('/band/:id', memberController.getMembers);
 
-// get all bands a given user is in
-router.get('/:id', memberController.getBandsbyMember);
+// get all bands a user is in
+router.get('/user/:id', memberController.getBandsbyMember);
+
 
 module.exports = router;

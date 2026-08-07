@@ -26,4 +26,17 @@ router.get('/:id/followers', bandController.getBandFollowers);
 // /bands/:id/shows
 router.get('/:id/shows', bandController.getBandShows);
 
+// get member count for a band
+// /bands/:id/memberCount
+router.get('/:id/memberCount', bandController.getMemberCount);
+
+// get follower count for a band
+// /bands/:id/followerCount
+router.get('/:id/followerCount', bandController.getFollowerCount);
+
+// get show count for a band
+// /bands/:id/showCount
+router.get('/:id/showCount', bandController.getShowCount);
+
+
 module.exports = router;

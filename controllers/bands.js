@@ -78,5 +78,30 @@ module.exports = {
         const inputs = [id];
         const [rows] = await pool.query(sqlQuery, inputs);
         res.json(rows);
-    }
+    },
+
+    getMemberCount: async (req, res) => {
+        const { id } = req.params;
+        const sqlQuery = bandStrings.getMemberCount;
+        const inputs = [id];
+        const [rows] = await pool.query(sqlQuery, inputs);
+        res.json(rows);
+    },
+
+    getFollowerCount: async (req, res) => {
+        const { id } = req.params;
+        const sqlQuery = bandStrings.getFollowerCount;
+        const inputs = [id];
+        const [rows] = await pool.query(sqlQuery, inputs);
+        res.json(rows);
+    },
+
+    getShowCount: async (req, res) => {
+        const { id } = req.params;
+        const sqlQuery = bandStrings.getShowCount;
+        const inputs = [id];
+        const [rows] = await pool.query(sqlQuery, inputs);
+        res.json(rows);
+    },
+
 }

@@ -3,6 +3,7 @@ const router = express.Router();
 const memberController = require('../../controllers/members')
 
 // remove members
-router.get('/id', memberController.removeMembers);
+// /members/:id
+router.delete('/:id', memberController.removeMember);
 
 module.exports = router;

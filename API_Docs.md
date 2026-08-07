@@ -185,6 +185,42 @@ Get all shows a band has played.
 
 ---
 
+### `GET /bands/:id/memberCount`
+Get the number of members in a band.
+
+**URL Params**
+| Param | Type | Description |
+|---|---|---|
+| `id` | integer | The band's `band_id` |
+
+**Response** - `{ member_count: N }`
+
+---
+
+### `GET /bands/:id/followerCount`
+Get the number of followers a band has.
+
+**URL Params**
+| Param | Type | Description |
+|---|---|---|
+| `id` | integer | The band's `band_id` |
+
+**Response** - `{ follower_count: N }`
+
+---
+
+### `GET /bands/:id/showCount`
+Get the number of shows a band has played.
+
+**URL Params**
+| Param | Type | Description |
+|---|---|---|
+| `id` | integer | The band's `band_id` |
+
+**Response** - `{ show_count: N }`
+
+---
+
 ### `POST /bands`
 Create a new band.
 
@@ -433,3 +469,80 @@ Delete a venue by ID.
 | Param | Type | Description |
 |---|---|---|
 | `id` | integer | The venue's `venue_id` |
+
+---
+
+## Members
+
+### `GET /members/band/:id`
+Get all members of a given band.
+
+**URL Params**
+| Param | Type | Description |
+|---|---|---|
+| `id` | integer | The band's `band_id` |
+
+**Response** - Array of member records.
+
+---
+
+### `GET /members/user/:id`
+Get all bands a given user is a member of.
+
+**URL Params**
+| Param | Type | Description |
+|---|---|---|
+| `id` | integer | The user's `user_id` |
+
+**Response** - Array of membership records.
+
+---
+
+### `POST /members`
+Add a user to a band.
+
+**Request Body**
+| Field | Type | Required | Description |
+|---|---|---|---|
+| `user_id` | integer | yes | The user to add |
+| `band_id` | integer | yes | The band to add them to |
+
+---
+
+### `DELETE /members/:id`
+Remove a user from a band.
+
+**URL Params**
+| Param | Type | Description |
+|---|---|---|
+| `id` | integer | Unused — removal is handled by body params |
+
+**Request Body**
+| Field | Type | Required | Description |
+|---|---|---|---|
+| `user_id` | integer | yes | The user to remove |
+| `band_id` | integer | yes | The band to remove them from |
+
+---
+
+## Followers
+
+### `POST /followers`
+Follow a band.
+
+**Request Body**
+| Field | Type | Required | Description |
+|---|---|---|---|
+| `user_id` | integer | yes | The user following |
+| `band_id` | integer | yes | The band to follow |
+
+---
+
+### `DELETE /followers`
+Unfollow a band.
+
+**Request Body**
+| Field | Type | Required | Description |
+|---|---|---|---|
+| `user_id` | integer | yes | The user unfollowing |
+| `band_id` | integer | yes | The band to unfollow |

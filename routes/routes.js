@@ -7,6 +7,7 @@ const venuesRoutes = require('./venues/routes');
 const showsRoutes = require('./shows/routes');
 const membersRoutes = require('./members/routes')
 const authRoutes = require('./auth/routes');
+const followersRoutes = require('./followers/routes');
 
 router.use('/users', usersRoutes);
 router.use('/bands', bandsRoutes);
@@ -14,5 +15,6 @@ router.use('/venues', venuesRoutes);
 router.use('/shows', showsRoutes);
 router.use('/members', membersRoutes)
 router.use('/auth', authRoutes);
+router.use('/followers', followersRoutes);
 
 module.exports = router;
