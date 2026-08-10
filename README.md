@@ -69,7 +69,7 @@
 
 ## Week 3 Goals
 - **Implementation**
-   - [ ] Produce a BCNF decomp proof for our design
+   - [x] Produce a BCNF decomp proof for our design
    - [x] Implementing DELETE routes and queries
    - [x] Implementing more complex routes and queries
       - login
@@ -81,10 +81,25 @@
    - [x] Test new routes and ensure they work
 
 ## Week 4 Reflection
+- *BCNF Decomp Proof*
+   - Our initial ERD was already in BCNF, but we went through all of the steps to prove it (These can be seen in bcnf-proof.pdf)
+- *New Routes and Queries*
+   - Implemented DELETE routes (and queries) for our initial entity sets
+   - Implemented login route (and new auth middleware) using a JWT
+   - Implemented routes (and queries) for following/unfollowing bands and joining/leaving bands
+   - Implemented new routes (and queries) for getting counts of various attributes (e.g. how many followers, members, shows played)
+- *Implemented Password Hashing*
+   - Implemented proper password hashing with bcrypt
 
 ## Week 4 Goals
 - **Implementation**
-   - [ ] Create admin protected version of the routes, and alter the non admin versions to inherit the input info from the JWT
+   - [ ] Protect certain routes behind admin role, update certain routes to inherit IDs from JWT instead of requiring them as input
+   - [ ] Begin work on simple frontend
+      - As we think of features from a user perspective, we should consider database changes/additions that would need to be made to accomodate them
+   - [ ] Look into API Hosting
+- **Testing**
+   - [ ] Test if routes are locked down as expected
+   - [ ] Test if user routes inherit info from JWT as expected 
    
    
    
