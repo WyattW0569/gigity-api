@@ -83,7 +83,7 @@
 ## Week 4 Reflection
 - *BCNF Decomp Proof*
    - Our initial ERD was already in BCNF, but we went through all of the steps to prove it (These can be seen in bcnf-proof.pdf)
-- *New Routes and Queries*
+- *New Routes and Queries*\\\\\
    - Implemented DELETE routes (and queries) for our initial entity sets
    - Implemented login route (and new auth middleware) using a JWT
    - Implemented routes (and queries) for following/unfollowing bands and joining/leaving bands

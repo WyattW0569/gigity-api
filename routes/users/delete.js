@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('../../controllers/users');
+const auth = require('../../middleware/auth');
 
-router.delete('/:id', userController.deleteUser);
+router.delete('/:id', auth, userController.deleteUser);
 
 module.exports = router;

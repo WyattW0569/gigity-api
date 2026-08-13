@@ -28,6 +28,7 @@ CREATE TABLE Shows (
     show_name VARCHAR(255),
     date DATE NOT NULL,
     ticket_link TEXT,
+    thumbnail_link TEXT,
     FOREIGN KEY (venue_id) REFERENCES Venues(venue_id) ON DELETE CASCADE
 );
 

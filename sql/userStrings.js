@@ -1,11 +1,11 @@
 e = module.exports;
 
 // GET queries
-e.getAllUsers = `SELECT user_id, email, username, profile_picture_url, created_at
-                 FROM Users`;
+e.getAllUsers = `SELECT *
+                 FROM users_view`;
 
-e.getUserById = `SELECT user_id, email, username, profile_picture_url, created_at
-                 FROM Users
+e.getUserById = `SELECT *
+                 FROM users_view
                  WHERE user_id = ?`;
 
 e.getFollowedBands = `SELECT B.name
@@ -14,7 +14,7 @@ e.getFollowedBands = `SELECT B.name
                       AND F.band_id = B.band_id
                       AND U.user_id = ?;`;
 
-e.getUserByEmail = `SELECT user_id, email, username, hashed_password, profile_picture_url
+e.getUserByEmail = `SELECT *
                     FROM Users
                     WHERE email = ?`;
 

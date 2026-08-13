@@ -4,6 +4,17 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const SALT_ROUNDS = 10;
 
+function checkID(req, res, givenID){
+    const isAdmin = req.user.role === 'admin';
+    const requestedID = Number(givenID);
+    if (isAdmin) return requestedID;
+
+    if (requestedID !== req.user.user_id){
+        res.status(403).json({ error: 'Cannot modify another user' });
+        return null;
+    }
+    return req.user.user_id;
+}
 
 module.exports = {
 
@@ -45,6 +56,8 @@ module.exports = {
     // update pfp
     updatePFP: async (req, res) => {
         const { id, pfp_url } = req.body;
+        const targetID = checkID(req,res,id);
+        if (targetID === null) return null;
         const sqlQuery = userStrings.updatePFP;
         const inputs = [pfp_url, id];
         const [rows] = await pool.query(sqlQuery, inputs);
@@ -54,6 +67,8 @@ module.exports = {
     // update username
     updateUsername: async (req, res) => {
         const { id, username } = req.body;
+        const targetID = checkID(req,res,id);
+        if (targetID === null) return null;
         const sqlQuery = userStrings.updateUsername;
         const inputs = [username, id];
         const [rows] = await pool.query(sqlQuery, inputs);
@@ -62,6 +77,8 @@ module.exports = {
     // update password
     updatePassword: async (req, res) => {
         const { id, password } = req.body;
+        const targetID = checkID(req,res,id);
+        if (targetID === null) return null;
         const sqlQuery = userStrings.updatePassword;
         const password_hash = await bcrypt.hash(password, SALT_ROUNDS);
         const inputs = [password_hash, id];
@@ -72,6 +89,8 @@ module.exports = {
     // delete user
     deleteUser: async (req, res) => {
         const id = req.params.id
+        const targetID = checkID(req,res,id);
+        if (targetID === null) return null;
         const sqlQuery = userStrings.deleteUser;
         const inputs = [id];
         const [rows] = await pool.query(sqlQuery, inputs);
