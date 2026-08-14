@@ -1,6 +1,22 @@
 const pool = require('../db/connection');
 const bandStrings = require("../sql/bandStrings");
 
+async function canEditBand(req, res, bandId) {
+    const isAdmin = req.user.role === 'admin';
+    if (isAdmin) return true;
+
+    const [rows] = await pool.query(
+        'SELECT 1 FROM Members WHERE user_id = ? AND band_id = ?',
+        [req.user.user_id, bandId]
+    );
+
+    if (rows.length === 0) {
+        res.status(403).json({ error: 'Not a member of this band' });
+        return false;
+    }
+    return true;
+}
+
 module.exports = {
     getAllBands: async (req, res) => {
         const sqlQuery = bandStrings.getAllBands;
@@ -58,6 +74,9 @@ module.exports = {
 
     updateBandPFP: async (req, res) => {
         const { id, icon_link } = req.body;
+        const allowed = await canEditBand(req, res, id);
+        if (!allowed) return;
+
         const sqlQuery = bandStrings.updateBandPFP;
         const inputs = [icon_link, id];
         const [rows] = await pool.query(sqlQuery, inputs);
@@ -66,6 +85,8 @@ module.exports = {
 
     updateBandName: async (req, res) => {
         const { id, name } = req.body;
+        const allowed = await canEditBand(req, res, id);
+        if (!allowed) return;
         const sqlQuery = bandStrings.updateBandName;
         const inputs = [name, id];
         const [rows] = await pool.query(sqlQuery, inputs);
@@ -74,6 +95,9 @@ module.exports = {
 
     deleteBand: async (req, res) => {
         const id = req.params.id;
+        const allowed = await canEditBand(req, res, id);
+        if (!allowed) return;
+        
         const sqlQuery = bandStrings.deleteBand;
         const inputs = [id];
         const [rows] = await pool.query(sqlQuery, inputs);
