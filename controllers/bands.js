@@ -69,7 +69,12 @@ module.exports = {
         const sqlQuery = bandStrings.createBand;
         const inputs = [name, icon_link];
         const [rows] = await pool.query(sqlQuery, inputs);
-        res.json(rows);
+        const newBandId = rows.insertId;
+        await pool.query(
+            'INSERT INTO Members (user_id, band_id) VALUES (?, ?)',
+            [req.user.user_id, newBandId]
+        );
+        res.status(201).json({ band_id: newBandId });
     },
 
     updateBandPFP: async (req, res) => {
@@ -97,7 +102,7 @@ module.exports = {
         const id = req.params.id;
         const allowed = await canEditBand(req, res, id);
         if (!allowed) return;
-        
+
         const sqlQuery = bandStrings.deleteBand;
         const inputs = [id];
         const [rows] = await pool.query(sqlQuery, inputs);
