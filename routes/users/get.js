@@ -7,6 +7,10 @@ const auth = require('../../middleware/auth');
 // /users
 router.get('/', auth, userController.getAllUsers);
 
+// get currently signed in user
+// /users/cur
+router.get('/cur', auth, userController.getCurUserInfo);
+
 // get specific user from id
 // /users/{id}
 router.get('/:id', auth, userController.getUserById);
