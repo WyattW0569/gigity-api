@@ -93,13 +93,41 @@
 
 ## Week 4 Goals
 - **Implementation**
-   - [ ] Protect certain routes behind admin role, update certain routes to inherit IDs from JWT instead of requiring them as input
-   - [ ] Begin work on simple frontend
+   - [x] Protect certain routes behind admin role, update certain routes to inherit IDs from JWT instead of requiring them as input
+   - [x] Begin work on simple frontend
       - As we think of features from a user perspective, we should consider database changes/additions that would need to be made to accomodate them
-   - [ ] Look into API Hosting
+   - [x] Look into API Hosting
 - **Testing**
-   - [ ] Test if routes are locked down as expected
-   - [ ] Test if user routes inherit info from JWT as expected 
+   - [x] Test if routes are locked down as expected
+   - [x] Test if user routes inherit info from JWT as expected 
+
+## Week 5 Reflection
+- *Begining to use views where applicable*
+   - use views to restrict the data the API recieves to only what is necessary
+- *Frontend*
+   - Created initial frontend, currently just displaying shows
+   - Current layout is very temp, however making it pretty is not a high priority at the moment
+- *API*
+   - Start with render for hosting (free) look into better services later
+   - Altered routes to take JWT into account when making db changes (currently users can onyl alter data they are related to)
+
+
+## Week 5 Goals
+- **Implementation**
+   - Continue work on frontend
+      - [ ] sign up/sign out
+      - [ ] login
+      - [ ] user profile
+      - [ ] making a band
+      - [ ] band profile
+      - [ ] Follow/unfollow bands
+      - [ ] *maybe* individual gig page, and page displaying gigs
+   - Develop more API routes as roadblocks in the frontend are discovered *protect those routes accordingly*
+   - Explore how we can relate other topics from the course into our project
+- **Testing**
+   - [ ] Test frontend pages
+   - [ ] continue to test API/db protection from both the frontend and by calling the API directly 
    
-   
-   
+
+      
+
