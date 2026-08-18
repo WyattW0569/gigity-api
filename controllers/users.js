@@ -51,6 +51,15 @@ module.exports = {
         res.json(rows);
     },
 
+    // get followed bands of current user
+    getCurFollowedBands: async (req, res) => {
+        const id = req.user.user_id;
+        const sqlQuery = userStrings.getFollowedBands;
+        const inputs = [id];
+        const [rows] = await pool.query(sqlQuery, inputs);
+        res.json(rows);
+    },
+
     // create new user
     createUser: async (req, res) => {
         const { email, username, password, pfp_url } = req.body;

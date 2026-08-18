@@ -11,6 +11,10 @@ router.get('/', userController.getAllUsers);
 // /users/cur
 router.get('/cur', auth, userController.getCurUserInfo);
 
+// get current users followed bands
+// /users/cur/followedBands
+router.get('/cur/followedBands', auth, userController.getCurFollowedBands);
+
 // get specific user from id
 // /users/{id}
 router.get('/:id', userController.getUserById);
