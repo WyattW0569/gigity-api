@@ -1,17 +1,18 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('../../controllers/users');
+const auth = require('../../middleware/auth');
 
 // get all users
 // /users
-router.get('/', userController.getAllUsers);
+router.get('/', auth, userController.getAllUsers);
 
 // get specific user from id
 // /users/{id}
-router.get('/:id', userController.getUserById);
+router.get('/:id', auth, userController.getUserById);
 
 // get specific users followed bands
 // /users/{id}/followedBands
-router.get('/:id/followedBands', userController.getFollowedBands);
+router.get('/:id/followedBands', auth, userController.getFollowedBands);
 
 module.exports = router;
