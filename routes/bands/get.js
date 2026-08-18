@@ -5,39 +5,39 @@ const auth = require('../../middleware/auth');
 
 // get all bands
 // /bands
-router.get('/', auth, bandController.getAllBands);
+router.get('/', bandController.getAllBands);
 
 // get specific band by id
 // /bands/:id
-router.get('/:id', auth, bandController.getBandById);
+router.get('/:id', bandController.getBandById);
 
 // get bands that have played with this band
 // /bands/:id/playedWith
-router.get('/:id/playedWith', auth, bandController.getBandsPlayedWith);
+router.get('/:id/playedWith', bandController.getBandsPlayedWith);
 
 // get members of this band
 // /bands/:id/members
-router.get('/:id/members', auth, bandController.getBandMembers);
+router.get('/:id/members', bandController.getBandMembers);
 
 // get followers of this band
 // /bands/:id/followers
-router.get('/:id/followers', auth, bandController.getBandFollowers);
+router.get('/:id/followers', bandController.getBandFollowers);
 
 // get shows this band has played
 // /bands/:id/shows
-router.get('/:id/shows', auth, bandController.getBandShows);
+router.get('/:id/shows', bandController.getBandShows);
 
 // get member count for a band
 // /bands/:id/memberCount
-router.get('/:id/memberCount', auth, bandController.getMemberCount);
+router.get('/:id/memberCount', bandController.getMemberCount);
 
 // get follower count for a band
 // /bands/:id/followerCount
-router.get('/:id/followerCount', auth, bandController.getFollowerCount);
+router.get('/:id/followerCount', bandController.getFollowerCount);
 
 // get show count for a band
 // /bands/:id/showCount
-router.get('/:id/showCount', auth, bandController.getShowCount);
+router.get('/:id/showCount', bandController.getShowCount);
 
 
 module.exports = router;

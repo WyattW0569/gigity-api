@@ -5,7 +5,7 @@ const auth = require('../../middleware/auth');
 
 // get all users
 // /users
-router.get('/', auth, userController.getAllUsers);
+router.get('/', userController.getAllUsers);
 
 // get currently signed in user
 // /users/cur
@@ -13,10 +13,10 @@ router.get('/cur', auth, userController.getCurUserInfo);
 
 // get specific user from id
 // /users/{id}
-router.get('/:id', auth, userController.getUserById);
+router.get('/:id', userController.getUserById);
 
 // get specific users followed bands
 // /users/{id}/followedBands
-router.get('/:id/followedBands', auth, userController.getFollowedBands);
+router.get('/:id/followedBands', userController.getFollowedBands);
 
 module.exports = router;
