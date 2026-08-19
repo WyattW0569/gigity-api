@@ -1,5 +1,5 @@
 const pool = require('../db/connection');
-const userStrings = require("../sql/venueStrings");
+const venueStrings = require("../sql/venueStrings");
 
 module.exports = {
     // get all venues
@@ -11,7 +11,7 @@ module.exports = {
 
     // get venues by venue_id
     getVenueById: async (req, res) => {
-        const { id } = req.params.id;
+        const { id } = req.params;
         const sqlQuery = venueStrings.getVenueById;
         const inputs = [id];
         const [rows] = await pool.query(sqlQuery, inputs);
@@ -20,7 +20,7 @@ module.exports = {
 
     // get all shows at a given venue
     getVenueShows: async (req, res) => {
-        const { id } = req.params.id;
+        const { id } = req.params;
         const sqlQuery = venueStrings.getVenueShows;
         const inputs = [id];
         const [rows] = await pool.query(sqlQuery, inputs);
@@ -49,7 +49,7 @@ module.exports = {
     updateVenueBookingLink: async (req, res) => {
         const { id, booking_link } = req.body;
         const sqlQuery = venueStrings.updateVenueBookingLink;
-        const inputs = [id, booking_link];
+        const inputs = [booking_link, id];
         const [rows] = await pool.query(sqlQuery, inputs);
         res.json(rows);
     },
